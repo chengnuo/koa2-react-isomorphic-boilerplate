@@ -1,3 +1,13 @@
+```
+
+简单介绍：
+参考 https://github.com/wssgcg1213/koa2-react-isomorphic-boilerplate
+自己加入了antd,redux-logger,redux-devtools
+koa2同构项目。
+
+```
+
+
 # **koa2-react-isomorphic-boilerplate**
 
 keywords: koa2,react,redux,isomorphic app
@@ -15,7 +25,7 @@ npm start  # dev mode
 
 open in browser
 
-http://127.0.0.1:3000/ 
+http://127.0.0.1:3000/
 
 ## Deploy
 
@@ -184,7 +194,7 @@ React 有丰富的数据层框架, 我用的是现在比较流行的 redux.
   })  
 ```
 
-Component: 
+Component:
 
 ```javascript
 class App extends Component {
@@ -202,11 +212,11 @@ class App extends Component {
       this.constructor.fetch(this.props, this.props.dispatch)
     }
   }
-  
+
   render () {
     const { location: { pathname } } = this.props
     const headerCurrent = pathname === '/' ? 'home' : pathname.slice(1)
-    
+
     return (<div>
       <Header current={headerCurrent}/>
       <Main>{this.props.children}</Main>
@@ -263,7 +273,7 @@ ReactDOM.render(
 const fetchStateUrl = __SERVER__ ? `http://localhost:${require('../../platforms/common/config').port}/api/state` : '/api/state'
 ```
 
-可以通过 webpack 的 definePlugin 来做, 但是由于我在 development 模式下是通过 node + babel-register + webpack-dev-middleware 直接运行的应用, 对于服务端运行的代码 webpack 就无能为力了. 我写了一个 babel 的插件 https://github.com/wssgcg1213/babel-plugin-inline-replace-variables 来直接对 js 的 identifier 进行替换. 
+可以通过 webpack 的 definePlugin 来做, 但是由于我在 development 模式下是通过 node + babel-register + webpack-dev-middleware 直接运行的应用, 对于服务端运行的代码 webpack 就无能为力了. 我写了一个 babel 的插件 https://github.com/wssgcg1213/babel-plugin-inline-replace-variables 来直接对 js 的 identifier 进行替换.
 
 在打包前端 bundle 的时候得益于 uglifyjs 插件的处理, 不可达代码会被清除, 这样也不需要担心 bundle.js 体积增大.
 
@@ -277,11 +287,11 @@ react 的 component 中充满了` import './component.less', import img from './
 
 搞两个流程图来看看
 
-#### 开发模式: 
+#### 开发模式:
 
 ![开发模式](https://dn-redrock.qbox.me/dev.png)
 
-#### 线上模式: 
+#### 线上模式:
 
 ![开发模式](https://dn-redrock.qbox.me/build.png)
 
