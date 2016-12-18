@@ -12,10 +12,13 @@ const FormItem = Form.Item;
 class Reg extends Component {
     handleSubmit(e) {
         e.preventDefault();
+        let _this = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                Modal.info({title: '提示', content: (
+                Modal.info({
+                    title: '提示',
+                    content: (
                         <div>
                             <h3>注册成功,请妥善保管</h3>
                             <ul>
@@ -24,7 +27,11 @@ class Reg extends Component {
                                 <li>你的确认密码：{values.confirm}</li>
                             </ul>
                         </div>
-                    )});
+                    ),
+                    onOk(){
+                        _this.props.history.push('login')
+                    }
+                });
             }
         });
     }
