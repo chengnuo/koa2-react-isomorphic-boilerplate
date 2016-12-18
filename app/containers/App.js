@@ -62,6 +62,7 @@ class App extends Component {
                                 <Menu.Item key="picture">picture</Menu.Item>
                                 <Menu.Item key="counter">counter</Menu.Item>
                                 <Menu.Item key="login">login</Menu.Item>
+                                <Menu.Item key="reg">reg</Menu.Item>
                             </SubMenu>
                             <SubMenu key="sub2" title={< span > < span > Navigtion Two < /span></span >}>
                                 <Menu.Item key="5">Option 5</Menu.Item>

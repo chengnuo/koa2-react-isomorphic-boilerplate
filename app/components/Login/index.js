@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Form, Icon, Input, Button, Checkbox} from 'antd';
+import { Link } from 'react-router'
 const FormItem = Form.Item;
 
 class Login extends Component {
@@ -21,7 +22,7 @@ class Login extends Component {
                             rules: [
                                 {
                                     required: true,
-                                    message: '请输入用户名/Please input your username!'
+                                    message: '请输入用户名'
                                 }
                             ]
                         })(
@@ -33,7 +34,7 @@ class Login extends Component {
                             rules: [
                                 {
                                     required: true,
-                                    message: '请输入密码/Please input your Password!'
+                                    message: '请输入密码'
                                 }
                             ]
                         })(
@@ -47,12 +48,12 @@ class Login extends Component {
                         })(
                             <Checkbox>Remember me</Checkbox>
                         )}
-                        <a className="login-form-forgot">Forgot password</a>
+                        <a className="login-form-forgot">找回密码</a>
                         <Button type="primary" htmlType="submit" className="login-form-button">
-                            Log in
+                            登录
                         </Button>
-                        Or
-                        <a>register now!</a>
+
+                        <Link to="reg">注册</Link>
                     </FormItem>
                 </Form>
             </div>
