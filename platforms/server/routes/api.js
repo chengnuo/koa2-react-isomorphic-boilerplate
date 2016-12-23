@@ -24,7 +24,7 @@ router.get('/user', async(ctx, next) => {
     //         console.log("Res:" + res);
     //     }
     // });
-
+    //console.log("this.request.body",this.request.body)
     var wherestr = {'username' : 'Tracy McGrady'};
 
     const UserFind = await User.find(wherestr, function(err, res){
@@ -36,6 +36,34 @@ router.get('/user', async(ctx, next) => {
         }
     })
     console.log("UserFind",UserFind)
+
+    ctx.body = {
+        status: 0,
+        info: 'this a users response!',
+        users: UserFind.map(o => ({
+          username: o.username,
+          userpwd: o.userpwd,
+        })),
+    }
+})
+
+router.post('/user', async(ctx, next) => {
+    console.log("ctx.body",ctx.request.body.username)
+    //console.log("this.request.body",this.request.body)
+    //var wherestr = {'username' : 'Tracy McGrady'};
+    let ctxUserName = ctx.request.body.username;
+    var wherestr = {'username' :ctxUserName};
+
+    const UserFind = await User.find(wherestr, function(err, res){
+        if (err) {
+            console.log("Error:" + err);
+        }
+        else {
+            console.log("Res:" + res);
+        }
+    })
+    console.log("UserFind",UserFind)
+
 
     ctx.body = {
         status: 0,

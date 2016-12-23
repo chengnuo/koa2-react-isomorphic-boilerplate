@@ -9,6 +9,27 @@ class Login extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                fetch('/api/user', {
+                        method: "post",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-Requested-With": "XMLHttpRequest"
+                        },
+                        body:JSON.stringify({
+                            username:values.username,
+                            password:values.password,
+                        }),
+                        // 设置同源cookies
+                        //credentials: 'same-origin',
+                        // 跨域资源共享
+                        credentials: 'include'
+                    })
+                    .then(response => response.json())
+                    .then(
+                        json => {
+                            console.log(json)
+                        }
+                    )
             }
         });
     }
@@ -18,7 +39,7 @@ class Login extends Component {
             <div id="components-form-demo-normal-login">
                 <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
                     <FormItem>
-                        {getFieldDecorator('userName', {
+                        {getFieldDecorator('username', {
                             rules: [
                                 {
                                     required: true,
