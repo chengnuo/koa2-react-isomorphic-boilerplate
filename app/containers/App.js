@@ -17,7 +17,7 @@ class App extends Component {
             current: '1'
         }
     }
-    
+
     // componentWillReceiveProps(){
     //     console.log("componentWillReceiveProps")
     // }
@@ -70,8 +70,10 @@ class App extends Component {
                                 <Menu.Item key="counter">counter</Menu.Item>
                                 <Menu.Item key="login">login</Menu.Item>
                                 <Menu.Item key="reg">reg</Menu.Item>
-                                <Menu.Item key="blog/1">blog</Menu.Item>
-                                <Menu.Item key="blog/2">blog2</Menu.Item>
+                                <SubMenu key="blog" title="blog">
+                                    <Menu.Item key="blog/1">blog</Menu.Item>
+                                    <Menu.Item key="blog/2">blog2</Menu.Item>
+                                </SubMenu>
                             </SubMenu>
                             <SubMenu key="sub2" title={< span > < span > Navigtion Two < /span></span >}>
                                 <Menu.Item key="5">Option 5</Menu.Item>
