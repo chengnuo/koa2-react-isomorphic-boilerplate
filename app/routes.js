@@ -14,7 +14,7 @@ export default (
     <Route path="counter" component={Counter} />
     <Route path="login" component={Login} />
     <Route path="reg" component={Reg} />
-    <Route path="blog" component={Blog} />
+    <Route path="blog/(:id)" component={Blog} />
   </Route>
 </Router>
 )

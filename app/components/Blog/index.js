@@ -14,8 +14,40 @@ import { Link } from 'react-router'
 const FormItem = Form.Item;
 
 class Blog extends Component {
+    componentDidMount(){
+        this.loadData();
+        console.log("componentDidMount")
+    }
+    componentDidUpdate(){
+        this.loadData();
+        console.log("componentDidUpdate")
+    }
+    loadData(){
+        fetch('/api/user', {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body:JSON.stringify({
+                username:"Tracy McGrady",
+                password:"abcd",
+            }),
+            // 设置同源cookies
+            //credentials: 'same-origin',
+            // 跨域资源共享
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(
+            json => {
+                console.log(json)
+            }
+        )
 
+    }
     render() {
+        console.info("blog",this)
         return (
             <div id="column-center" style={{"padding":"10px"}}>
                 <article className="markdown">
