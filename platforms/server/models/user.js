@@ -12,5 +12,5 @@ var UserSchema = new Schema({
     // userage: {type: Number},                        //年龄
     // logindate : { type: Date}                       //最近登录时间
 });
-
-module.exports = mongoose.model('User',UserSchema);
+var model = mongoose.model('User',UserSchema);
+module.exports = model

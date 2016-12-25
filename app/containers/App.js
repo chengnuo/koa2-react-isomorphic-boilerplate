@@ -35,8 +35,16 @@ class App extends Component {
         console.log('click ', e);
         this.setState({current: e.key});
 
-        let Url = e.keyPath[0]=="home"?"/":"/"+e.keyPath[0];
-        this.props.history.push(Url)
+        let Url = "";
+        let result = "";
+        if(e.keyPath[0]=="home"){
+            result='/'
+        }else if(e.keyPath[1]){
+            result='/'+e.keyPath[1]+'/'+e.keyPath[0]
+        }else{
+            result='/'+e.keyPath[0]
+        }
+        this.props.history.push(result)
     }
     render() {
         return (
@@ -71,9 +79,15 @@ class App extends Component {
                                 <Menu.Item key="login">login</Menu.Item>
                                 <Menu.Item key="reg">reg</Menu.Item>
                                 <SubMenu key="blog" title="blog">
-                                    <Menu.Item key="blog/1">blog</Menu.Item>
-                                    <Menu.Item key="blog/2">blog2</Menu.Item>
+                                    <Menu.Item key="1">blog</Menu.Item>
+                                    <Menu.Item key="2">blog2</Menu.Item>
                                 </SubMenu>
+                            </SubMenu>
+                            <SubMenu key="user" title={< span >  < span >用户管理< /span></span >}>
+                            <Menu.Item key="list">列表</Menu.Item>
+                            <Menu.Item key="detail">详情</Menu.Item>
+                            <Menu.Item key="create">创建</Menu.Item>
+                            <Menu.Item key="editor">编辑</Menu.Item>
                             </SubMenu>
                             <SubMenu key="sub2" title={< span > < span > Navigtion Two < /span></span >}>
                                 <Menu.Item key="5">Option 5</Menu.Item>
@@ -82,12 +96,6 @@ class App extends Component {
                                     <Menu.Item key="7">Option 7</Menu.Item>
                                     <Menu.Item key="8">Option 8</Menu.Item>
                                 </SubMenu>
-                            </SubMenu>
-                            <SubMenu key="sub4" title={< span >  < span > Navigation Three < /span></span >}>
-                                <Menu.Item key="9">Option 9</Menu.Item>
-                                <Menu.Item key="10">Option 10</Menu.Item>
-                                <Menu.Item key="11">Option 11</Menu.Item>
-                                <Menu.Item key="12">Option 12</Menu.Item>
                             </SubMenu>
                         </Menu>
                     </div>
