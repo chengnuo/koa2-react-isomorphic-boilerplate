@@ -33,7 +33,7 @@ class Create extends Component {
                 }).then(response => response.json()).then(json => {
                     console.log(json)
                     this.setState({data: json.users})
-                    if(json){
+                    if(json.result == "success"){
                         Modal.info({
                             title: '提示',
                             content: (
@@ -48,6 +48,16 @@ class Create extends Component {
                             onOk(){
                                 _this.props.history.push('login')
                             }
+                        });
+                    }else{
+                        Modal.info({
+                            title: '提示',
+                            content: (
+                                <div>
+                                    <h3>用户名已存在</h3>
+                                </div>
+                            ),
+
                         });
                     }
                 })

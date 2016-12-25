@@ -8,7 +8,7 @@ var mongoose = require('./index.js'),
 
 var UserSchema = new Schema({
     username : { type: String },                    //用户账号
-    userpwd: {type: String},                        //密码
+    password: {type: String},                        //密码
     // userage: {type: Number},                        //年龄
     // logindate : { type: Date}                       //最近登录时间
 });

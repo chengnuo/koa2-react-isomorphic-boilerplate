@@ -93,12 +93,16 @@ router.post('/user/create', async(ctx, next) => {
     //var wherestr = {'username' : 'Tracy McGrady'};
     let ctxUsername = ctx.request.body.username;
     let ctxPassword = ctx.request.body.password;
+    var wherestrFind = {
+        'username' :ctxUsername,
+    };
     var wherestr = {
         'username' :ctxUsername,
         'password' :ctxPassword,
     };
+    console.log("wherestr",wherestr)
 
-    const UserCreate = await User.create(wherestr, function(err, res){
+    const UserFind = await User.find(wherestrFind, function(err, res){
         if (err) {
             console.log("Error:" + err);
         }
@@ -106,12 +110,28 @@ router.post('/user/create', async(ctx, next) => {
             console.log("Res:" + res);
         }
     })
-    console.log("UserCreate",UserCreate)
+    var result = "";
+    if(UserFind.length>0){
+        result = "failure"
+    }else{
+        const UserCreate = await User.create(wherestr, function(err, res){
+            if (err) {
+                console.log("Error:" + err);
+            }
+            else {
+                console.log("Res:" + res);
+            }
+        })
+        result = "success"
+    }
+
+    //console.log("UserCreate",UserCreate)
 
 
     ctx.body = {
         status: 0,
         info: 'this a users response!',
+        result:result
     }
 })
 
